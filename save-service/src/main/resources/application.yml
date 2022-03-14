@@ -1,0 +1,24 @@
+server:
+  port: 8005
+
+spring:
+  application:
+    name: save-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+    username: dream
+    password: 1234
+
+mybatis:
+  mapper-locations: /mapper/**/*.xml
+
+eureka:
+  instance:
+    instance-id:  save-microservice-instance
+
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
