@@ -14,10 +14,7 @@ spring:
 # mybatis 연동 설정
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
-  
-# mybatis 연동 설정
-mybatis:
-  mapper-locations: classpath*:mapper/*.xml
+
 
 # 유레카 클라이언트 설정   
 eureka:
