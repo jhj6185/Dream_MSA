@@ -1,3 +1,7 @@
+spring:
+  application:
+    name: list-service
+
 #  # db 설정      
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
