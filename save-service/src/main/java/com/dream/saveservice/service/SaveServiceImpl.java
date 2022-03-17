@@ -1,5 +1,7 @@
 package com.dream.saveservice.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.dream.saveservice.dto.SaveDto;
@@ -18,6 +20,11 @@ public class SaveServiceImpl implements SaveService{
 	public void save(SaveDto dto) {
 		// TODO Auto-generated method stub
 		mapper.save(dto);
+	}
+	@Override
+	public List<SaveDto> select(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.select(userId);
 	}
 
 }

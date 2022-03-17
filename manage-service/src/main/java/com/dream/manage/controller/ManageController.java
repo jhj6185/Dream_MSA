@@ -1,6 +1,14 @@
 package com.dream.manage.controller;
 
+import java.security.Principal;
+
+import javax.annotation.security.RolesAllowed;
+
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+import org.keycloak.representations.AccessToken;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,32 +16,90 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.dream.manage.dto.ManageDto;
 import com.dream.manage.service.ManageService;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-//@RequestMapping("/pms")
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Slf4j
 public class ManageController {
 	private ManageService service;
 
+	@RolesAllowed({ "manage_read", "ADMIN" })
 	@GetMapping("/register")
-	public String register() {
+	public String register(@AuthenticationPrincipal Principal principal, Model model) {
+		KeycloakAuthenticationToken keycloakAuthenticationToken = (KeycloakAuthenticationToken) principal;
+		log.info("keycloakAuthenticationToken : "+keycloakAuthenticationToken);
+		AccessToken accessToken = keycloakAuthenticationToken.getAccount().getKeycloakSecurityContext().getToken();
+		model.addAttribute("Id", principal.getName());
+		log.info("넘어온다!!!!!!!" + principal.getName());
+		log.info("name : " + accessToken.getName());
+		log.info("phoneNum : " + accessToken.getPhoneNumber());
+		model.addAttribute("username", accessToken.getName());
 		return "register";
 	}
-	
+
+//	@RolesAllowed({ "manage_read", "ADMIN" })
+//	@GetMapping("/register")
+//	public String getUserInfo(Model model) {
+//        KeycloakAuthenticationToken authentication = (KeycloakAuthenticationToken) 
+//          SecurityContextHolder.getContext().getAuthentication();
+//        
+//        Principal principal = (Principal) authentication.getPrincipal();        
+//        String dob="";
+//        
+//        if (principal instanceof KeycloakPrincipal) {
+//            KeycloakPrincipal kPrincipal = (KeycloakPrincipal) principal;
+//            IDToken token = kPrincipal.getKeycloakSecurityContext().getIdToken();
+//
+//            Map<String, Object> customClaims = token.getOtherClaims();
+//
+//            if (customClaims.containsKey("DOB")) {
+//                dob = String.valueOf(customClaims.get("DOB"));
+//            }
+//        }
+//        
+//        model.addAttribute("username", principal.getName());
+//        model.addAttribute("dob", dob);
+//        return "register";
+//    }
+
+	@RolesAllowed({ "ADMIN" })
 	@PostMapping("/register")
 	public String register(@ModelAttribute("dto") ManageDto dto) {
+		log.info("컨트롤러 시작" + dto.getDescription());
 		service.register(dto);
-		return "regist_success";
+		log.info("컨트롤러 끝");
+		return "/regist_success";
 	}
+
 	@PostMapping("/modify")
 	public String modify() {
 		return "asd";
 	}
+
 	@GetMapping("/delete")
 	public String delete() {
 		return "asd";
 	}
+
+//	@RequestMapping("/")
+//	public String main(Authentication authentication) {
+//
+//		if (authentication != null) {
+//			System.out.println("타입정보 : " + authentication.getClass());
+//			
+//			// 세션 정보 객체 반환
+//			WebAuthenticationDetails web = (WebAuthenticationDetails)authentication.getDetails();
+//			System.out.println("세션ID : " + web.getSessionId());
+//			System.out.println("접속IP : " + web.getRemoteAddress());
+//
+//			// UsernamePasswordAuthenticationToken에 넣었던 UserDetails 객체 반환
+//			UserDetails userVO = (UserDetails) authentication.getPrincipal();
+//			System.out.println("ID정보 : " + userVO.getUsername());
+//			return userVO.getUsername();
+//		}
+//		
+//		return "fail";
+//	}
 }
