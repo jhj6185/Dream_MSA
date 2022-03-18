@@ -20,6 +20,7 @@ repositories {
 
 ext {
 	set('springCloudVersion', "2021.0.1")
+	set('keycloakversion', "16.1.1")
 }
 
 dependencies {
@@ -28,12 +29,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.keycloak:keycloak-spring-boot-starter'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-	implementation 'org.keycloak:keycloak-spring-boot-starter'
-	
 	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -43,7 +44,7 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-		mavenBom "org.keycloak.bom:keycloak-adapter-bom:16.1.1"
+		mavenBom "org.keycloak.bom:keycloak-adapter-bom:${keycloakversion}"
 	}
 }
 

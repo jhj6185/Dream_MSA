@@ -23,8 +23,9 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 public class ManageConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().authenticated() // OR .access("authenticated AND hasRole('product_read')")
-				.and().oauth2ResourceServer().jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()));
+		http.authorizeRequests().anyRequest().authenticated()
+				.and().oauth2ResourceServer().jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
+				.and().anonymous().disable();
 	}
 
 	private Converter<Jwt, ? extends AbstractAuthenticationToken> jwtAuthenticationConverter() {

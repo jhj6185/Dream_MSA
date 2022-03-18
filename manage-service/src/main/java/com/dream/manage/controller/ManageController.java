@@ -4,9 +4,7 @@ import java.security.Principal;
 
 import javax.annotation.security.RolesAllowed;
 
-import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
-import org.keycloak.representations.AccessToken;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,42 +25,11 @@ public class ManageController {
 
 	@RolesAllowed({ "manage_read", "ADMIN" })
 	@GetMapping("/register")
-	public String register(@AuthenticationPrincipal Principal principal, Model model) {
-		KeycloakAuthenticationToken keycloakAuthenticationToken = (KeycloakAuthenticationToken) principal;
-		log.info("keycloakAuthenticationToken : "+keycloakAuthenticationToken);
-		AccessToken accessToken = keycloakAuthenticationToken.getAccount().getKeycloakSecurityContext().getToken();
-		model.addAttribute("Id", principal.getName());
-		log.info("넘어온다!!!!!!!" + principal.getName());
-		log.info("name : " + accessToken.getName());
-		log.info("phoneNum : " + accessToken.getPhoneNumber());
-		model.addAttribute("username", accessToken.getName());
+	public String register(Principal principal, Model model) {
+		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+		model.addAttribute("list", token.getTokenAttributes());
 		return "register";
 	}
-
-//	@RolesAllowed({ "manage_read", "ADMIN" })
-//	@GetMapping("/register")
-//	public String getUserInfo(Model model) {
-//        KeycloakAuthenticationToken authentication = (KeycloakAuthenticationToken) 
-//          SecurityContextHolder.getContext().getAuthentication();
-//        
-//        Principal principal = (Principal) authentication.getPrincipal();        
-//        String dob="";
-//        
-//        if (principal instanceof KeycloakPrincipal) {
-//            KeycloakPrincipal kPrincipal = (KeycloakPrincipal) principal;
-//            IDToken token = kPrincipal.getKeycloakSecurityContext().getIdToken();
-//
-//            Map<String, Object> customClaims = token.getOtherClaims();
-//
-//            if (customClaims.containsKey("DOB")) {
-//                dob = String.valueOf(customClaims.get("DOB"));
-//            }
-//        }
-//        
-//        model.addAttribute("username", principal.getName());
-//        model.addAttribute("dob", dob);
-//        return "register";
-//    }
 
 	@RolesAllowed({ "ADMIN" })
 	@PostMapping("/register")
