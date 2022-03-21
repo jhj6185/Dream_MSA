@@ -84,7 +84,7 @@ public class UserController {
 		   System.out.println("login창으로 이동");
 	      try {//redirect URL 알아보기
 	    	  System.out.println("login창1으로 이동");
-	         response.sendRedirect("http://localhost:8080/auth/realms/MSA/protocol/openid-connect/auth?response_type=code&client_id=memberService&redirect_uri=http://localhost:8000/user/auth&scope=openid&nonce=asb3");
+	         response.sendRedirect("http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/auth?response_type=code&client_id=memberService&redirect_uri=http://localhost:8000/user/auth&scope=openid&nonce=asb3");
 	      }
 	      catch (IOException e) {
 	         // TODO Auto-generated catch block
@@ -102,6 +102,7 @@ public class UserController {
 //	   }
 	   
 	   @GetMapping(path = "/auth") //로그인 성공시 받을 수 있는 url : keycloak에서 설정한 redirect url
+
 	   public ResponseEntity<Void> auth(HttpServletRequest request, HttpServletResponse response,Model model, HttpSession session) 
 		throws ServletException, IOException {
 	      //to do token save
@@ -182,5 +183,6 @@ public class UserController {
 	      map.put("scope", scope);
 	      
 	      return map; //buffer에 json형태를 다 문자열로 바꿔서 view에 보여주고있다
+
 	      }
 }

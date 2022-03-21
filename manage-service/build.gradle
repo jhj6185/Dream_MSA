@@ -20,29 +20,44 @@ repositories {
 
 ext {
 	set('springCloudVersion', "2021.0.1")
+	set('keycloakversion', "16.1.1")
 }
 
 dependencies {
+<<<<<<< HEAD
 	//oauth server, keycloak bom 이랑 starter keycloak, security 필요
 	implementation('org.keycloak:keycloak-spring-boot-starter')
 	implementation('org.springframework.boot:spring-boot-starter-security')
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 	//원래
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+=======
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+>>>>>>> fa11c23d86f4714b0be5a183a4cf760af6f28ab7
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	implementation 'mysql:mysql-connector-java'
+	implementation 'org.keycloak:keycloak-spring-boot-starter'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+<<<<<<< HEAD
 		mavenBom "org.keycloak.bom:keycloak-adapter-bom:12.0.1"
+=======
+		mavenBom "org.keycloak.bom:keycloak-adapter-bom:${keycloakversion}"
+>>>>>>> fa11c23d86f4714b0be5a183a4cf760af6f28ab7
 	}
 }
 

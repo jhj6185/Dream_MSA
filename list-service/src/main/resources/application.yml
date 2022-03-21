@@ -32,7 +32,7 @@ mybatis:
     
 eureka:
   instance:
-    instance-id:  list-microservice-instance
+    instance-id: list-microservice-instance
 
   client:
     register-with-eureka: true
@@ -40,9 +40,4 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/auth/realms/api_gateway
          

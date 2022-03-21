@@ -10,6 +10,8 @@
 	href="https://fonts.googleapis.com/css2?family=Parisienne&amp;display=swap"
 	rel="stylesheet">
 <link href="css/startup.css" rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
 
@@ -17,22 +19,21 @@
 		<div class="form1">
 			<div class="header">
 				<div class="brand">Dream Security</div>
+				<div th:text="${list.preferred_username}"></div>
 				<div class="message">금융 상품 등록 페이지 입니다.</div>
 			</div>
-			<form action="./register" method="post">
+			<form action="./register" method="post" name="manage">
 				<div class="form">
 					<div class="first">
 						<label for="email">금융상품이름</label> <input type="text"
-							name="proName" placeholder="금융상품이름">
-							<label for="email">대출한도</label> <input type="Number"
-							name="proLimit" placeholder="대출한도">
-							<label for="email">상품설명</label> <input type="text"
-							name="description" placeholder="상품설명">
-							<label for="email">만기기간</label> <input type="Number"
-							name="term" >
-							
+							name="proName" placeholder="금융상품이름"> <label for="email">대출한도</label>
+						<input type="Number" name="proLimit" placeholder="대출한도"> <label
+							for="email">상품설명</label> <input type="text" name="description"
+							placeholder="상품설명"> <label for="email">만기기간</label> <input
+							type="Number" name="term">
 					</div>
-					<input type="submit" name="등록하기">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" /> <input type="submit" name="등록하기">
 
 				</div>
 			</form>

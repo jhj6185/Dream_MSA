@@ -8,9 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SaveDto {
+	private int orderNo;
 	private int proNo;
 	private String userId;
 	private double orderPrice;
 	private String orderDate;
 	private String endDate;
+	private int status;
 }
