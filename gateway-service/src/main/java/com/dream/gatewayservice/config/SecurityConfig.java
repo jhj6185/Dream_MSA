@@ -10,7 +10,7 @@ public class SecurityConfig {
 	
 	@Bean
 	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-		http.authorizeExchange().pathMatchers("/menu/**", "/product/**").permitAll()
+		http.authorizeExchange().pathMatchers("/menu/**").permitAll()
 			.and().authorizeExchange().anyExchange().authenticated()
 			.and().oauth2Login() // to redirect to oauth2 login page.
 			.and().csrf().disable();
