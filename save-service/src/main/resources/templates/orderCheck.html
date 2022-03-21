@@ -38,8 +38,7 @@
 						</thead>
 						<tbody>
 							<tr th:each="list: ${list}">
-								<td class="check"><input name="check" type="checkbox">
-								</td>
+								<td class="check"><input name="check" type="checkbox"></td>
 								<td class="num" th:text="${list.orderNo}"></td>
 								<td class="num" th:text="${list.proNo}"></td>
 								<td class="name" th:text="${list.userId}"></td>
@@ -49,45 +48,15 @@
 									th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}"></td>
 								<td class="views"
 									th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>
-								<td class="name" th:text="${list.status}"></td>
+								<td class="name">
+									<div th:switch="${list.status}">
+										<span th:case="1" th:text="승인완료">승인완료</span> <span th:case="2"
+											th:text="승인거절">승인거절</span> <span th:case="0" th:text="승인대기">승인대기</span>
+									</div>
+								</td>
 							</tr>
 						</tbody>
 					</table>
-					<!--           <div class="search">
-                        <div class="count">Te 10 Dolor</div>
-                        <div class="bundle clearfix">
-                            <select>
-                                <option value="tellus">tellus</option>
-                                <option value="enim">enim</option>
-                                <option value="vitae">vitae</option>
-                                <option value="montes">montes</option>
-                            </select>
-                            <input type="text">
-                            <button>
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="pages">
-                        <ul>
-                            <li class="active">
-                                <a>1</a>
-                            </li>
-                            <li>
-                                <a>2</a>
-                            </li>
-                            <li>
-                                <a>3</a>
-                            </li>
-                            <li>
-                                <a>4</a>
-                            </li>
-                            <li>
-                                <a>5</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div> -->
 				</div>
 			</div>
 		</div>
