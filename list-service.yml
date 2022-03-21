@@ -1,16 +1,14 @@
 spring:
   application:
-   name: list-service  # git에 있는 확장자 제외한 설정파일 이름.
-
- # db 설정      
-  datasource:
+    name: list-service  # git에 있는 확장자 제외한 설정파일 이름.    
+  datasource: # db 설정
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
     username: dream
     password: 1234
   security: #keycloak 관련 설정
     oauth2:
-     resourceserver:
+      resourceserver:
         jwt:
           jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
 
