@@ -33,6 +33,7 @@
 								<th>대출금액</th>
 								<th class="date">대출일</th>
 								<th class="views">상환일</th>
+								<th>주문 상태</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -45,6 +46,7 @@
 								<td th:text="${#numbers.formatInteger(list.orderPrice,3,'COMMA')}+' 원'">원</td>
 								<td class="date" th:text="${#dates.format(list.orderDate, 'yyyy-MM-dd')}"></td>
 								<td class="views" th:text="${#dates.format(list.endDate, 'yyyy-MM-dd')}"></td>
+								<td th:text="${list.status}"></td>
 							</tr>
 						</tbody>
 					</table>

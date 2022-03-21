@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,14 +28,16 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class StatusController {
 	private final StatusService statusService;
-
+	
+	@RolesAllowed({ "ADMIN" })
 	@GetMapping("/wait")
 	public String wait(Model model) throws Exception {
 		List<StatusDto> list = statusService.getStatusList();
 		model.addAttribute("list", list);
 		return "statusList";
 	}
-
+	
+	@RolesAllowed({ "ADMIN" })
 	@PostMapping({"/update"})
 	@ResponseBody
 	public void update(@RequestParam Map<String, Object> data) throws JsonProcessingException {

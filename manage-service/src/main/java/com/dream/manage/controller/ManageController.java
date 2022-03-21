@@ -23,11 +23,11 @@ import lombok.extern.slf4j.Slf4j;
 public class ManageController {
 	private ManageService service;
 
-	@RolesAllowed({ "manage_read", "ADMIN" })
+	@RolesAllowed({ "ADMIN" })
 	@GetMapping("/register")
 	public String register(Principal principal, Model model) {
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-		log.info("toString : "+token.getTokenAttributes().toString());
+		log.info("toString : " + token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());
 		return "register";
 	}

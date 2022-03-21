@@ -18,20 +18,10 @@ spring:
     password: 1234
   security:
     oauth2:
-      resourceserver:
+     resourceserver:
         jwt:
           jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
-#      client:
-#        provider:
-#          keycloak:
-#            issuer-uri: http://192.168.1.54:8080/auth/realms/MSA
-#        registration:
-#          keycloak:
-##            provider: keycloak
-#            client-id: spring-gateway-client
-#            client-secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
-#            authorization-grant-type: authorization_code
-#            redirect-uri: '{baseUrl}/login/oauth2/code/keycloak' 
+      
 keycloak:
   realm: MSA
   bearer-only: true
@@ -40,6 +30,7 @@ keycloak:
   auth-server-url: http://192.168.1.54:8080/auth
   credentials:
     secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
+
 mybatis:
 #  configuration:
 #    multiple-result-sets-enabled: false

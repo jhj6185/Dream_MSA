@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>대출을 했으면 돈을 갚아야지</h1>
+	<h1>인덱스 페이지입니다. 메뉴페이지</h1>
+	<input th:text="${list.username}">
+	<input th:text="${list.scope}">
+	<input th:text="${session.sessionList.scope}">
 </body>
 </html>
