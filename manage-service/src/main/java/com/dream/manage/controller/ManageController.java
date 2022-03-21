@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ManageController {
 	private ManageService service;
-
+	//@RolesAllowed("ADMIN")
 	@GetMapping("/register")
 	public String register() {
 		return "register";

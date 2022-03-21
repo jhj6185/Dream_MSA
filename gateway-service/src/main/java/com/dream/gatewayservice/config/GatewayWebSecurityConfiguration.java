@@ -22,7 +22,7 @@ public class GatewayWebSecurityConfiguration {
 	// Also logout at the keycloak SSO Connect Provider
 	http.logout(logout -> logout.logoutSuccessHandler(new OidcClientInitiatedServerLogoutSuccessHandler(clientRegistrationRepository)));
 	// Require authentication for all request
-	//http.authorizeExchange().anyExchange().authenticated(); keycloak default redirectURL·Î ¿Å±â´Â ¾Ö - ¹İµå½Ã ÁÖ¼®Ã³¸®
+	//http.authorizeExchange().anyExchange().authenticated(); keycloak default redirectURLë¡œ ì˜®ê¸°ëŠ” ì•  - ë°˜ë“œì‹œ ì£¼ì„ì²˜ë¦¬
 	// Allow showing /home within a frame
 	http.headers().frameOptions().mode(Mode.SAMEORIGIN);
 	// Disable CSRF in the gateway to prevent conflicts with proxied server CSRF
