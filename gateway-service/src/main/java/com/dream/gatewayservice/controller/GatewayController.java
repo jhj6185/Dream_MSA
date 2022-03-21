@@ -10,6 +10,6 @@ public class GatewayController {
 	
 	@GetMapping("/")
 	public String index(Principal principal) {
-		return principal.getName()+principal.toString();
+		return principal.getName()+"///"+principal.toString();
 	}
 }
