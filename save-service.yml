@@ -19,7 +19,4 @@ management:
     exposure:
      include: refresh 
      
-# mybatis 연동 설정
-mybatis:
-  mapper-locations: /mapper/**/*.xml
 
