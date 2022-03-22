@@ -6,6 +6,10 @@ spring:
         enabled: true
      restart:
         enabled: true
+  freemarker:
+     cache: false
+  thymeleaf:
+     cache: false
   # db 설정   
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
