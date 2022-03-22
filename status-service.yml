@@ -13,6 +13,7 @@ spring:
   resources:
     static-locations: classpath:/resources/static/**
 
+# 유레카 설정
 eureka:
   instance:
     instance-id: status-microservice-instance
