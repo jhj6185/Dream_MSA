@@ -1,7 +1,11 @@
 spring:
   application:
    name: product-service
-   
+  devtools:
+     livereload:
+        enabled: true
+     restart:
+        enabled: true
   # db 설정   
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
