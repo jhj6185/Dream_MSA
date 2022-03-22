@@ -1,7 +1,12 @@
 spring:
   application:
    name: manage-service  
-
+  devtools:
+     livereload:
+        enabled: true
+     restart:
+        enabled: true
+        
 # 유레카 클라이언트 설정
 eureka:
   instance:
