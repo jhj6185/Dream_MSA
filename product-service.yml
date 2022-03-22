@@ -39,8 +39,3 @@ management:
    web:
     exposure:
      include: refresh 
-
-kafka:
-  server_endpoint: 127.0.0.1:9092
-  topic_name: my-topic
-  group_id: consumer-1
