@@ -12,3 +12,8 @@ spring:
      cache: false
   resources:
     static-locations: classpath:/resources/static/**
+  security:
+    oauth2:
+     resourceserver:
+        jwt:
+          jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
