@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductController {	
 	private final ProductService productService;
 	
-	@GetMapping("/dream")
+	@GetMapping("/list")
 	public String dream(Model model) throws Exception {
 		List<ProductDto> product = productService.getProductList();
 		model.addAttribute("dream", product);
