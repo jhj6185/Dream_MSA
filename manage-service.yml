@@ -1,8 +1,11 @@
 spring:
   application:
    name: manage-service  
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
 
 # 유레카 클라이언트 설정
 eureka:
