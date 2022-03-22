@@ -22,13 +22,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka   # 서비스를 등록할 서버 주소를 지정
 
-keycloak:
-  realm: MSA
-  bearer-only: true
-  ssl-required: external
-  resource: spring-gateway-client
-  auth-server-url: http://192.168.1.54:8080/auth
-  credentials:
-    secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
+mybatis:
+  mapper-locations: /mapper/**/*.xml
+  type-aliases-package: com.dream.manage.dto
 
 
