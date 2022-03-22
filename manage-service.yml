@@ -1,11 +1,8 @@
 spring:
   application:
    name: manage-service  
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
-    username: dream
-    password: 1234  
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration 
 
 # 유레카 클라이언트 설정
 eureka:
