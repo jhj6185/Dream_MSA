@@ -30,9 +30,9 @@ spring:
         - id: loan-service
           uri: lb://LOAN-SERVICE 
           predicates:
-            - Path=/apply/** 
+            - Path=/loan/** 
           filters:
-            - RewritePath=/apply/?(?<segment>.*), /$\{segment} 
+            - RewritePath=/loan/?(?<segment>.*), /$\{segment} 
                                  
         - id: list-service
           uri: lb://LIST-SERVICE 
