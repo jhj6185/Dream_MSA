@@ -76,7 +76,6 @@ spring:
             authorization-grant-type: authorization_code
             redirect-uri: '{baseUrl}/login/oauth2/code/keycloak'
 
-#외부
 # 유레카 클라이언트 설정
 eureka:
   client:
@@ -85,4 +84,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정
 
-
+management:
+  endpoints:
+   web:
+    exposure:
+     include: refresh 
