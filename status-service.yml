@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: status-service
+ devtools:
+    livereload:
+       enabled: true
+    restart:
+       enabled: true
