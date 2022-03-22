@@ -1,11 +1,6 @@
 spring:
   application:
    name: manage-service  
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
 
 # 유레카 클라이언트 설정
 eureka:
@@ -16,3 +11,12 @@ eureka:
     fetch-registry: true  # 유레카에서 조회할지 여부
     service-url:
       defaultZone: http://localhost:8761/eureka   # 서비스를 등록할 서버 주소를 지정
+
+keycloak:
+  realm: MSA
+  bearer-only: true
+  ssl-required: external
+  resource: spring-gateway-client
+  auth-server-url: http://192.168.1.54:8080/auth
+  credentials:
+    secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
