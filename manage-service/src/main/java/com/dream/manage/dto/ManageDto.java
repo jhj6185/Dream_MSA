@@ -2,11 +2,11 @@ package com.dream.manage.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class ManageDto {
 //	private int proId;
 	private String proName;
